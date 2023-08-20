@@ -57,7 +57,5 @@ public class OrangeHrmPro {
         } else {
             System.out.println("Login_Text validation failed!");
         }
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[2]/ul/li/span/p")).click();
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[2]/ul/li/ul/li[4]/a")).click();
 
     }}
