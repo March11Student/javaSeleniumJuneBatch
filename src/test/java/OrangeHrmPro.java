@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -11,17 +12,25 @@ import java.util.concurrent.TimeUnit;
 
 
 public class OrangeHrmPro {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Set the path to ChromeDriver executable
         System.setProperty(
-                "webdriver.chrome.driver",
-                "/Users/mdrubel/Documents/workspace-original/javaSeleniumJuneBatch/chromedriver");
+                "webdriver.gecko.driver",
+                "C:\\Users\\Zayan\\Desktop\\javaSeleniumJuneBatch\\src\\test\\java\\resources\\geckodriver.exe");
         // Instantiate a ChromeDriver class.
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new FirefoxDriver();
 
         // Navigate to the webpage
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+       driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+       // driver.get("https://abc8472.sg-host.com/");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Thread.sleep(5000);
+        String title=driver.getTitle();
+        if(title.contentEquals("OrangeHR")){
+            System.out.println("title Match");
+        }else{
+            System.out.println("Title Does Not match");
+        }
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")).sendKeys("Admin");
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input")).sendKeys("admin123");
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")).click();
@@ -58,4 +67,5 @@ public class OrangeHrmPro {
             System.out.println("Login_Text validation failed!");
         }
 
-    }}
+    }
+}
