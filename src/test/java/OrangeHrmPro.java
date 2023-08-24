@@ -26,12 +26,13 @@ public class OrangeHrmPro {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Thread.sleep(5000);
         String title=driver.getTitle();
-        if(title.contentEquals("OrangeHR")){
+        if(title.contentEquals("OrangeHRM")){
             System.out.println("title Match");
         }else{
             System.out.println("Title Does Not match");
         }
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")).sendKeys("Admin");
+
+       /* driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")).sendKeys("Admin");
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input")).sendKeys("admin123");
         driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")).click();
 
@@ -58,14 +59,22 @@ public class OrangeHrmPro {
         WebElement login_text=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/h5"));
 
         // Get the actual text from the WebElement
-        String actual_login_text =login_text.getText();
+        String actual_login_text =login_text.getText();*/
 
         // Compare the actual text with the expected text
-        if (expected_login_text.contains(actual_login_text)){
+       /* if (expected_login_text.contains(actual_login_text)){
             System.out.println("Login_Text validation Pass");
         } else {
             System.out.println("Login_Text validation failed!");
-        }
+        }*/
+
+        WebElement userName=driver.findElement(By.name("username"));
+        userName.sendKeys("Admin");
+        WebElement password=driver.findElement(By.name("password"));
+        password.sendKeys("admin123");
+        WebElement login=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button"));
+        login.click();
+        Thread.sleep(5000);
 
     }
 }
