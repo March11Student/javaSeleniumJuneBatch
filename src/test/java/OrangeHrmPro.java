@@ -101,6 +101,7 @@ public class OrangeHrmPro {
         WebElement dash=driver.findElement(By.xpath("//h6"));
         String dashName=dash.getText();
 
+        //testng assertion
         Assert.assertEquals(dashName, "Dashboard");
 
         //***********************************Test case 4 validate add employee *************************************
