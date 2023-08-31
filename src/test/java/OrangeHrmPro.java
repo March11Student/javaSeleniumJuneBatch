@@ -15,7 +15,7 @@ public class OrangeHrmPro {
         // Set the path to ChromeDriver executable
         System.setProperty(
                 "webdriver.chrome.driver",
-                "/Users/mdrubel/Documents/workspace-original/javaSeleniumJuneBatch/chromedriver");
+                "C:\\workspace\\javaSeleniumJuneBatch\\chromedriver.exe");
         // Instantiate a ChromeDriver class.
         WebDriver driver = new ChromeDriver();
 
