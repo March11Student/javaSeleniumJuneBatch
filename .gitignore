@@ -1,1 +1,4 @@
-/target/test-classes/OrangeHrmPro.class
+/target/
+*jar
+*.zip
+/.metadata/
