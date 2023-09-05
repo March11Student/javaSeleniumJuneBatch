@@ -14,6 +14,12 @@ public class Calculator {
         while(count==10){
             System.out.println("output from while loop: "+count);
         }
+        String fullName="asd";
+        if(fullName.contentEquals("asd")){
+            System.out.println("name match");
+        }else{
+            System.out.println("Name not Match");
+        }
     }
     public static void validateDoWhileLoop(){
         int count=11;
@@ -21,6 +27,8 @@ public class Calculator {
             System.out.println("output from do-while loop: "+count);
         }while (count==10);
     }
+
+
 
 
 }

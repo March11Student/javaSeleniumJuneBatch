@@ -5,9 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -103,6 +100,8 @@ public class OrangeHrmPro {
         } else {
             System.out.println("Login_Text validation failed!");
         }*/
+
+        // ******************** Test case-4. validate add employee*******************************************************
         WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
         pim.click();
         Thread.sleep(5000);
@@ -132,4 +131,5 @@ public class OrangeHrmPro {
         }
 
 
-    }}
+    }
+}
