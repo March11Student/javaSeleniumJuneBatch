@@ -1,8 +1,6 @@
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
@@ -13,13 +11,26 @@ public class OrangeHrmPro {
         // Set the path to ChromeDriver executable
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\workspace\\javaSeleniumJuneBatch\\chromedriver.exe");
+                "C:\\Users\\Zayan\\Desktop\\javaSeleniumJuneBatch\\src\\test\\java\\resources\\chrome.exe");
+
+        System.setProperty(
+                "webdriver.gecko.driver",
+                "C:\\Users\\Zayan\\Desktop\\javaSeleniumJuneBatch\\src\\test\\java\\resources\\geckodriver.exe");
+
+
         // Instantiate a ChromeDriver class.
-        WebDriver driver = new ChromeDriver();
+      //  WebDriver driver = new ChromeDriver();
+
+        // Instantiate a Firefox class.
+        WebDriver driver ;
+              driver  = new FirefoxDriver();
 
         // Navigate to the webpage
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+
+
 //**********************common for every test case*******************************************
         //Test case-1: validate web title
         //step-1. get the page title
@@ -123,6 +134,7 @@ public class OrangeHrmPro {
 
         WebElement fName = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]/div[1]/h6"));
          String fullName =  fName.getText();
+
         if (fullName.contentEquals("Bilkis Indorewala")){
             System.out.println("name match");
 
@@ -130,6 +142,28 @@ public class OrangeHrmPro {
             System.out.println("name not match");
         }
 
+    WebElement dir=driver.findElement(By.xpath("//span[normalize-space()='Directory']"));
+        dir.click();
+        Thread.sleep(3000);
+        WebElement emp=driver.findElement(By.xpath("//input[@placeholder='Type for hints...']"));
+        emp.sendKeys("Bilkis");
+        Thread.sleep(3000);
 
+        emp.sendKeys(Keys.ARROW_DOWN);
+         emp.sendKeys(Keys.ENTER);
+
+         WebElement searchButton=driver.findElement(By.xpath("//button[normalize-space()='Search']"));
+         searchButton.click();
+
+         Thread.sleep(5000);
+
+
+
+
+        driver.close();
+        driver.quit();
     }
+
+
+
 }
