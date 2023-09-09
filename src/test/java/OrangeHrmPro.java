@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class OrangeHrmPro {
-    public static void main(String[] args) throws InterruptedException {
+    public static <webelement> void main(String[] args) throws InterruptedException {
         // Set the path to ChromeDriver executable
         System.setProperty(
                 "webdriver.chrome.driver",
@@ -103,6 +103,7 @@ public class OrangeHrmPro {
         } else {
             System.out.println("Login_Text validation failed!");
         }*/
+        //********************testcase validate loginpage4*******************************************************//
         WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
         pim.click();
         Thread.sleep(5000);
@@ -130,6 +131,16 @@ public class OrangeHrmPro {
         }else {
             System.out.println("name not match");
         }
+        // Testcase Directory--------------------------------------
+        WebElement directory = driver.findElement(By.xpath("//span[@class='oxd-text oxd-text--span oxd-main-menu-item--name'][normalize-space()='Directory']"));
+        directory.click();
+        Thread.sleep(5000);
+
+        WebElement EmployeeName = driver.findElement(By.xpath("//input[@placeholder='Type for hints...']"));
+        EmployeeName.sendKeys("Bilkis");
+        WebElement Search = driver.findElement(By.xpath(" //button[normalize-space()='Search']"));
+        Search.click();
+        Thread.sleep (5000);
 
 
     }}
