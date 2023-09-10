@@ -1,6 +1,7 @@
 package com.automation.testCases;
 
 import com.automation.pages.TestBaseClass;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 public class TestPIMFunctionality extends TestBaseClass {
