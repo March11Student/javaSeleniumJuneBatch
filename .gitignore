@@ -2,3 +2,9 @@
 *jar
 *.zip
 /.metadata/
+*.jar
+*.dll
+*.classpath
+/bin/
+
+
