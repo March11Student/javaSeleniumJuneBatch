@@ -11,28 +11,36 @@ public class OrangeHrmPro {
         // Set the path to ChromeDriver executable
         System.setProperty(
                 "webdriver.chrome.driver",
-                "C:\\Users\\Zayan\\Desktop\\javaSeleniumJuneBatch\\src\\test\\java\\resources\\chrome.exe");
+                System.getProperty("user.dir")+"\\src\\test\\java\\resources\\chromedriver.exe");
 
-        System.setProperty(
-                "webdriver.gecko.driver",
-                "C:\\Users\\Zayan\\Desktop\\javaSeleniumJuneBatch\\src\\test\\java\\resources\\geckodriver.exe");
+        /*System.setProperty(
+               "webdriver.gecko.driver",
+               System.getProperty("user.dir")+\\src\\test\\java\\resources\\geckodriver.exe");
 
-
-        // Instantiate a ChromeDriver class.
-      //  WebDriver driver = new ChromeDriver();
+*/
+       //declare driver
+        WebDriver driver ;
 
         // Instantiate a Firefox class.
-        WebDriver driver ;
-              driver  = new FirefoxDriver();
+        //  driver  = new FirefoxDriver();
+
+        // Instantiate a ChromeDriver class.
+        driver  = new ChromeDriver();
 
         // Navigate to the webpage
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+        //add implicit wait
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        //maximize window
+        driver.manage().window().maximize();
 
 
 
 //**********************common for every test case*******************************************
         //Test case-1: validate web title
+
         //step-1. get the page title
         String title=driver.getTitle();
         //validate the title
@@ -74,44 +82,6 @@ public class OrangeHrmPro {
         //testng assertion
         Assert.assertEquals(dashName, "Dashboard");
 
-        //***********************************Test case 4 validate add employee *************************************
-
-        /*driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/div[2]/input")).sendKeys("Admin");
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[2]/div/div[2]/input")).sendKeys("admin123");
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")).click();
-
-        // Define the expected text you want to validate
-        String expected_text="Dashboard";
-        // Find the WebElement containing the text you want to validate
-        WebElement dashboard_text=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[1]/span/h6"));
-
-        // Get the actual text from the WebElement
-        String actual_text =dashboard_text.getText();
-
-        // Compare the actual text with the expected text
-        if (actual_text.contains(expected_text)){
-            System.out.println("Text validation Pass");
-        } else {
-            System.out.println("Text validation failed!");
-        }
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[2]/ul/li/span/p")).click();
-        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[2]/ul/li/ul/li[4]/a")).click();
-
-        // Define the expected text you want to validate
-        String expected_login_text="Login";
-        // Find the WebElement containing the text you want to validate
-        WebElement login_text=driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/h5"));
-
-        // Get the actual text from the WebElement
-        String actual_login_text =login_text.getText();
-
-        // Compare the actual text with the expected text
-        if (expected_login_text.contains(actual_login_text)){
-            System.out.println("Login_Text validation Pass");
-        } else {
-            System.out.println("Login_Text validation failed!");
-        }*/
-
         // ******************** Test case-4. validate add employee*******************************************************
         WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
         pim.click();
@@ -150,14 +120,12 @@ public class OrangeHrmPro {
         Thread.sleep(3000);
 
         emp.sendKeys(Keys.ARROW_DOWN);
-         emp.sendKeys(Keys.ENTER);
+        emp.sendKeys(Keys.ENTER);
 
          WebElement searchButton=driver.findElement(By.xpath("//button[normalize-space()='Search']"));
          searchButton.click();
 
          Thread.sleep(5000);
-
-
 
 
         driver.close();
