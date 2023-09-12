@@ -1,8 +1,10 @@
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -36,13 +38,14 @@ public class OrangeHrmPro {
         //maximize window
         driver.manage().window().maximize();
 
-
-
 //**********************common for every test case*******************************************
+
+
+
         //Test case-1: validate web title
 
         //step-1. get the page title
-        String title=driver.getTitle();
+      /*  String title=driver.getTitle();
         //validate the title
 
         if(title.contentEquals("OrangeHRM")){
@@ -61,7 +64,7 @@ public class OrangeHrmPro {
         }else{
             System.out.println("URL Does Not match");
         }
-
+*/
 //***************************end of  test case****************************************************
 // test case-3 validate user login
         //finding webelement
@@ -83,7 +86,7 @@ public class OrangeHrmPro {
         Assert.assertEquals(dashName, "Dashboard");
 
         // ******************** Test case-4. validate add employee*******************************************************
-        WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
+     /*   WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
         pim.click();
         Thread.sleep(5000);
         WebElement addEmployee = driver.findElement(By.xpath("//a[contains(text(),'Add Employee')]"));
@@ -112,7 +115,7 @@ public class OrangeHrmPro {
             System.out.println("name not match");
         }
 
-    WebElement dir=driver.findElement(By.xpath("//span[normalize-space()='Directory']"));
+      WebElement dir=driver.findElement(By.xpath("//span[normalize-space()='Directory']"));
         dir.click();
         Thread.sleep(3000);
         WebElement emp=driver.findElement(By.xpath("//input[@placeholder='Type for hints...']"));
@@ -125,8 +128,88 @@ public class OrangeHrmPro {
          WebElement searchButton=driver.findElement(By.xpath("//button[normalize-space()='Search']"));
          searchButton.click();
 
-         Thread.sleep(5000);
+         Thread.sleep(5000);*/
 
+         // test case 5. validate top menu bar
+       /* WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
+        pim.click();
+        List<WebElement>menubar=driver.findElements(By.xpath("//nav[@aria-label='Topbar Menu']//ul/li"));
+        System.out.println("Number of items: "+menubar.size());
+        for(int i=0;i<menubar.size();i++){
+            String txt=menubar.get(i).getText();
+            System.out.println(txt);
+            if(txt.contentEquals("Configuration")){
+                menubar.get(i).click();
+                Thread.sleep(5000);
+                //break;
+            }
+        }*/
+
+
+
+        //test case -6
+        /*
+         //select configuration at PIM
+        WebElement pim1 = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
+        pim1.click();
+        String path="//span[@class='oxd-topbar-body-nav-tab-item']";
+        WebElement configuration=driver.findElement(By.xpath(path));
+        configuration.click();
+        Thread.sleep(2000);
+        // select termination record
+        WebElement termination=driver.findElement(By.xpath("//a[contains(text(),'Termination Reasons')]"));
+        termination.click();
+        Thread.sleep(2000);
+
+
+
+
+        //now click element
+        WebElement retiredCheckbox=driver.findElement(By.xpath("//div[contains(text(),'Retired')]/preceding::span[1]/i"));
+        // scroll to viewpoint
+        //create an object of javascriptExecutor
+        JavascriptExecutor je = (JavascriptExecutor) driver;
+        // now execute query which actually will scroll until that element is not appeared on page.
+        je.executeScript("arguments[0].scrollIntoView(true);",retiredCheckbox);
+        System.out.println("Before checked: "+retiredCheckbox.isSelected());
+        retiredCheckbox.click();
+        Thread.sleep(5000);
+        System.out.println("After checked: "+retiredCheckbox.isSelected());
+
+
+        WebElement employeeList=driver.findElement(By.xpath("//a[normalize-space()='Employee List']"));
+        employeeList.click();
+        Thread.sleep(2000);
+
+        WebElement jobTitle=driver.findElement(By.xpath("//a[normalize-space()='Employee List']"));
+        employeeList.click();
+        Thread.sleep(2000);*/
+
+            // test case print menubar text
+
+        WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
+        pim.click();
+        Thread.sleep(2000);
+        List<WebElement> menuBar= driver.findElements(By.xpath("//nav[@aria-label='Topbar Menu']/ul/li"));
+        System.out.println("Number of elements: "+menuBar.size());
+        int size=menuBar.size();
+
+        for(int i=0;i<size;i++){
+            WebElement menu=menuBar.get(i);
+           String txt=menu.getText();
+            System.out.println(txt);
+            if (txt.contentEquals("Configuration")){
+                menu.click();
+                Thread.sleep(5000);
+            }
+            else if (txt.contentEquals("Employee List")){
+                System.out.println("From if else condition: "+txt);
+            }else if(txt.contentEquals("Add Employee")){
+                String  font=menu.getCssValue("font-size");
+                System.out.println("Font size is: "+font);
+            }
+
+        }
 
         driver.close();
         driver.quit();

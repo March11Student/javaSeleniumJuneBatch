@@ -35,7 +35,10 @@ public class JavaDataType {
        // modulus();
       //  assignValue();
       //  relationalOperator();
-        nestedIfElse(55);
+      //  nestedIfElse(55);
+      //  forLoopExample();
+        dataValueExample();
+
     }
 
     public static void addition(){
@@ -105,5 +108,21 @@ public class JavaDataType {
         }else {
                 System.out.println("Please check mark");
         }
+    }
+
+    public static void forLoopExample(){
+        //int i=0;
+        //syntax
+        //for(starting point/statement;exit point;step
+       for (double i=0;i<=25;i=i+5){
+        //statement,
+           System.out.println("value  of i is: "+i);
+       }
+    }
+
+    public static void dataValueExample(){
+        int a=10;
+        a=20;
+        System.out.println(a);
     }
 }
