@@ -187,7 +187,7 @@ public class OrangeHrmPro {
 
             // test case print menubar text
 
-        WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
+      /*  WebElement pim = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a"));
         pim.click();
         Thread.sleep(2000);
         List<WebElement> menuBar= driver.findElements(By.xpath("//nav[@aria-label='Topbar Menu']/ul/li"));
@@ -209,6 +209,41 @@ public class OrangeHrmPro {
                 System.out.println("Font size is: "+font);
             }
 
+        }
+*/
+        //test case 7 validate menus
+       String menu="//ul[@class='oxd-main-menu']/li";
+       List<WebElement> menus= driver.findElements(By.xpath(menu));//will return 12 web elements
+       int sizeOfMenus= menus.size();
+        System.out.println("Number of elements: "+sizeOfMenus);
+
+
+
+       /* WebElement element0 = menus.get(0);
+        String text0=element0.getText();
+        System.out.println("webElement text is: "+text0);
+
+        WebElement element1= menus.get(1);
+        String text1=element1.getText();
+        System.out.println("webElement text is: "+text1);
+
+        WebElement Element= menus.get(2);
+        String text2=Element.getText();
+        System.out.println("webElement text is: "+text2);
+
+        WebElement element3 = menus.get(3);
+        String text3=element3.getText();
+        System.out.println("webElement text is: "+text3);
+
+        WebElement element4 = menus.get(4);
+        String text4=element4.getText();
+        System.out.println("webElement text is: "+text4);*/
+
+        for(int i=0;i<menus.size();i++){
+            System.out.println("Value of i now: "+i);
+            WebElement element = menus.get(i);
+            String text=element.getText();
+            System.out.println("webElement text is: "+text);
         }
 
         driver.close();

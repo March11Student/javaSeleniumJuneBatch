@@ -36,8 +36,8 @@ public class JavaDataType {
       //  assignValue();
       //  relationalOperator();
       //  nestedIfElse(55);
-      //  forLoopExample();
-        dataValueExample();
+        forLoopExample();
+      //  dataValueExample();
 
     }
 
@@ -113,8 +113,8 @@ public class JavaDataType {
     public static void forLoopExample(){
         //int i=0;
         //syntax
-        //for(starting point/statement;exit point;step
-       for (double i=0;i<=25;i=i+5){
+        //for(starting point/statement;exit condition;step
+       for (int i=0;i<=5;i=i+1){
         //statement,
            System.out.println("value  of i is: "+i);
        }

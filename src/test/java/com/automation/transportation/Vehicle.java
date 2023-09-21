@@ -1,6 +1,8 @@
 package com.automation.transportation;
 
-public class Vehicle {
+import com.automation.animal.Dog;
+
+public class Vehicle extends Dog{
     //syntax of a class <access modifier> class <class Name>
 
     //instance variable
